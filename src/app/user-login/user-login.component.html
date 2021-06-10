@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+          <form #login="ngForm"  action="" method="post">
+              <div class="form-login">
+                  <h4>Welcome back.</h4>
+                  <input type="text"  required minlength="8" maxlength="140" #username="ngModel" name="user_name"  id="userName" class="form-control input-sm chat-input" placeholder="username" [(ngModel)]="user.username"/>                                        
+                  <span class="text-danger" *ngIf="username.touched && (username.errors?.required || username.errors?.minlength || username.errors?.maxlength)"> Invalid username! </span>
+                  <br>
+                  <input type="password" required minlength="8" maxlength="140" #userpass="ngModel" name="user_password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" [(ngModel)]="user.password"/>
+                  <span class="text-danger" *ngIf="userpass.touched &&(userpass.errors?.required ||  userpass.errors?.minlength ||  userpass.errors?.maxlength)"> Invalid Password! </span>
+                  <br>
+                  <div class="wrapper">
+                  <span class="group-btn">     
+                      <button type="submit" [disabled]="login.invalid" (click)='Login()' class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></button>
+                  </span>
+                  </div>
+                  </div>
+              </form>                      
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<!--<div  class="container" > 
+          <h1>User Login form</h1>
+          <img src="/assets/images/userL.png"  height="50%" width="50%" #t2/>
+            <input type="text"  [(ngModel)]='user.username' placeholder="Enter User Name"/>
+            <input type="password" [(ngModel)]='user.password' placeholder="Enter Your password"/>
+            <button (click)='Login()'>Login</button>
+         <button routerLink="/Register" >Register</button> 
+</div>-->

@@ -1,0 +1,81 @@
+<div class="col-md-4" id="MainWrapper">
+
+  <form #register="ngForm" class="well form-horizontal" action=" " method="post"  id="contact_form">
+<fieldset>
+
+<!-- Form Name -->
+<legend><h2><b>Registration Form</b></h2></legend><br>
+
+<!-- Text input-->
+<input type="file"  (change)='change($event,t2)' #t/>
+<img src="/assets/images/login1.png"  (click)='done(t)'  #t2/>
+
+<div class="form-group">
+<label class="col-md-4 control-label">First Name</label>  
+<div class="col-md-8 inputGroupContainer">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input type="text" name="first_name" #fstname="ngModel" required minlength="3" maxlength="140" pattern="[A-Za-z]{3,140}" placeholder="First Name" class="form-control" [(ngModel)]="user.firstname"  name="fstname">
+  </div>
+</div>
+</div>
+<P class="text-danger" *ngIf="fstname.touched &&fstname.errors?.required"> First Name is required! </P>
+<p class="text-danger" *ngIf="fstname.touched && fstname.errors?.maxlength"> Maximum Lenght = {{fstname.errors?.maxlength.requiredLength}}</p>
+<p class="text-danger" *ngIf="fstname.touched && fstname.errors?.pattern"> First Name should be 3 Characters at least , only Characters are allowed!</p>
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label">Username</label>  
+<div class="col-md-8 inputGroupContainer">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input type="text" required minlength="8" maxlength="140" #username="ngModel" name="user_name" placeholder="Username" class="form-control" [(ngModel)]="user.username">
+  </div>
+</div>
+</div>
+<p class="text-danger" *ngIf="username.touched &&username.errors?.required"> Username is required!  </p>
+<p class="text-danger" *ngIf="username.touched && username.errors?.minlength"> Minimum length = {{username.errors?.minlength.requiredLength}} </p>
+<p class="text-danger" *ngIf="username.touched && username.errors?.maxlength"> Maximum length = {{username.errors?.maxLength.requiredLength}} </p>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" >Password</label> 
+  <div class="col-md-8 inputGroupContainer">
+  <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input type="password" required minlength="8" maxlength="140" #p #userpass="ngModel" name="user_password" placeholder="Password" class="form-control" [(ngModel)]="user.password" >
+  </div>
+</div>
+</div>
+<p class="text-danger" *ngIf="userpass.touched &&userpass.errors?.required"> Password is required!  </p>
+<p class="text-danger" *ngIf="userpass.touched && userpass.errors?.minlength"> Minimum length = {{userpass.errors?.minlength.requiredLength}} </p>
+
+
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" >Confirm Password</label> 
+  <div class="col-md-8 inputGroupContainer">
+  <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input name="confirm_password" #c placeholder="Confirm Password" pattern="{p.value}" class="form-control"  type="password">
+  </div>
+</div>
+</div>
+<p class="text-danger" *ngIf="p.value!=c.value"> Unmatched passwords! </p>
+     
+
+<!-- Button -->
+<div class="form-group">
+<label class="col-md-4 control-label"></label>
+<div class="col-md-8"><br>
+  <button type="submit" [disabled]="register.invalid==true||p.value!=c.value" (click)="addOne()" class="btn btn-warning" > SUBMIT <span class="glyphicon glyphicon-send"></span></button>
+</div>
+</div>
+
+</fieldset>
+</form>
+</div>
+<!-- /.container -->  

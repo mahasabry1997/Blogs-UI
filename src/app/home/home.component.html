@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="well" *ngFor="let blog of blogs">
+        <div class="media">
+            <a class="pull-left" >
+              <img class="media-object" src="{{blog.image}}">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading alert alert-danger">{{blog.title}}</h4>
+            <p class="text-right author">{{blog.auther}}</p>
+            <p>{{blog.body}}</p>
+            <ul class="list-inline list-unstyled">
+                <li><span><i class="glyphicon glyphicon-calendar"> {{blog.createdAt}}</i></span></li>
+              <li>|</li>
+              <span><i class="glyphicon glyphicon-comment"></i> {{(blog.comments.length)}} comments</span>
+              </ul>
+         </div>
+      </div>
+    </div>
+  </div>
+
+

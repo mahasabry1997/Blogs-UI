@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">    
+    <div class="col-md-8 col-md-offset-2">                      
+      <h1>Create Blog</h1>                    
+      <form #createBlog="ngForm" method="POST">
+        <input type="file" name="file" (change)='change($event,t2)' #t/>
+        <img src="/assets/images/blog.jpeg"  (click)='done(t)'  #t2/>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="title" class="form-control" name="title" required [(ngModel)]='blog.title'/>
+        </div>                        
+        <div class="form-group">
+          <label for="author"> Author </label>
+          <input type="text" class="form-control" name="author" required [(ngModel)]='blog.auther'/>
+        </div>
+        <div class="form-group">
+          <label for="body"> Body </label>
+          <textarea rows="5" class="form-control" name="body" required [(ngModel)]='blog.body'></textarea>
+        </div>
+        <div class="form-group">
+          <label for="tags"> Tags </label>
+          <input type="text" class="form-control" name="tags" [(ngModel)]='blog.tages'/>
+        </div>                                                                  
+        <div class="form-group">
+          <button  class="btn btn-primary col-md-5" [disabled]="createBlog.invalid" (click)='addOne()' routerLink="/home"> Create </button>                                                    
+        </div>                        
+      </form>
+    </div>                
+  </div>
+</div>

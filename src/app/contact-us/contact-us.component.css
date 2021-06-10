@@ -1,0 +1,10 @@
+.details li {
+    list-style: none;
+  }
+  li {
+      margin-bottom:10px;    
+  }
+  img{
+      height: 250px;
+      width: 250px;
+  }

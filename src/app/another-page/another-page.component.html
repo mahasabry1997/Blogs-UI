@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 class="text-primary">{{user.firstname}}</h1>
+  <img src="{{user.image}}" id="uimg">
+  <div class="well" *ngFor="let blog of blogs;let j = index">
+      <div class="media">
+          <a class="pull-left" >
+            <img class="media-object" src="{{blog.image}}">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading alert alert-danger">{{blog.title}}</h4>
+          <p class="text-right author">{{blog.auther}}</p>
+          <p>{{blog.body}}</p>
+          <ul class="list-inline list-unstyled">
+              <li><span><i class="glyphicon glyphicon-calendar">{{blog.createdAt}}</i></span></li>
+            <li>|</li>           
+            <span><i class="glyphicon glyphicon-comment" ></i> {{blog.comments.length}} comments</span>
+            <button class="btn btn-primary" (click)="showComment(blog,j);"> Show comments</button>
+            </ul>
+            <input type="text" placeholder="Add your comment here ..." class="form-control" #i />
+            <button class="btn btn-warning" (click)="save(i.value,blog)">Add Comment</button>
+            <div *ngFor="let item of users ;let i=index" >
+              <div *ngIf="flags[j]">
+                <div class="row commentWrapper">
+                  <img src="{{item.image}}"  class="commentImg col-md-3"/>
+                  <div  class="col-md-8 comment">
+                    <p class="PComment col-md-12 text-primary mt-2">{{item.firstname}}</p>
+                    <p class="commentBody">{{blog.comments[i].body}}</p>
+                </div>
+            </div>             
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+#title
+{
+    color: red;
+    font-style:italic;
+    font-variant-caps:petite-caps;
+}
+#photoWraper{
+    height: 100%;
+    flex: 1;
+    text-align: center;
+}

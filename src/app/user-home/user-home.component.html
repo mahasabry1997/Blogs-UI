@@ -1,0 +1,69 @@
+<div class="container">
+  <h1 class="text-primary" id="UserName"> {{puser.firstname}} </h1>
+  <img src="{{puser.image}}" id="pimg">
+  <button routerLink="/suggested" class="btn btn-warning" >suggested<span class="glyphicon glyphicon-send"></span></button>
+  <button routerLink="/followers" class="btn btn-warning" >Followers<span class="glyphicon glyphicon-send"></span></button>
+  <button routerLink="/following" class="btn btn-warning" >following<span class="glyphicon glyphicon-send"></span></button>
+
+  <button routerLink="/newBlog" class="btn btn-warning" >Add new blog<span class="glyphicon glyphicon-send"></span></button>
+    <div class="well" *ngFor="let blog of blogs;let j = index">
+        <div class="media">
+            <a class="pull-left">
+              <img class="media-object" src="{{blog.image}}">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading alert alert-danger">{{blog.title}}</h4>
+            <p class="text-right author">By {{blog.auther}}</p>
+            <p>{{blog.body}}</p>
+            <ul class="list-inline list-unstyled">
+                <li><span><i class="glyphicon glyphicon-calendar">{{blog.createdAt}}</i></span></li>
+              <li>|</li>
+              <span><i class="glyphicon glyphicon-comment"></i> {{blog.comments.length}} comments</span>
+              <button class="btn btn-primary" (click)="showComment(blog,j);">Show comments</button>
+              </ul>
+              <i class="fa fa-cut" style="font-size:20px;color:red;margin: 10px;" (click)="deleteBlog(blog._id)"></i>
+              <i class="fa fa-edit" style="font-size:20px;color:red;margin: 10px;" (click)="open(blog,t,b,m)"></i>
+              <div *ngFor="let item of users ;let i=index" >
+                <div *ngIf="flags[j]">
+                  <div class="row commentWrapper">
+                    <img src="{{item.image}}" class="commentImg col-md-3"/>
+                    <div class="col-md-8 comment">
+                      <p class="PComment col-md-12 text-primary mt-2"> {{item.firstname}}</p>
+                      <p class="commentBody">{{blog.comments[i].body}}</p>
+                    </div>                   
+                  </div>        
+              </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal" class="modal" #m>
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color :lightblue ;">
+        <span class="close" (click)='close(m)'>&times;</span>
+        <h2>Edit Your Blog</h2>
+      </div>
+      <div class="modal-body" style="height: 200px;width: 150;">
+          <h3 style="margin-left: 10px;">Enter your New Title</h3>
+          <input style="margin: 10px;" class="form-control"  type="text"  #t/>
+          <h3 style="margin-left: 10px;">Enter Your New Body</h3>
+          <input style="margin: 10px;" class="form-control" type="text"  #b/>
+      </div>
+      <div class="modal-footer" style="height: 60px; background-color:lightblue ;">
+        <button class="btn btn-primary btn-md" style="margin: 10px;" (click)="saveEdite(t,b,m)">Save Changes <i class="fa fa-sign-in"></i></button>
+      </div>
+    </div>
+  </div>
+
+<!--
+<div  *ngFor="let blog of blogs">
+ <img src="{{blog.image}}">
+  <h3>{{blog.title}}</h3>
+  <p>{{blog.createdAt}}</p>
+  <p>{{blog.body}}</p>
+</div>
+<button routerLink="/newBlog">Add new blog</button>
+-->
